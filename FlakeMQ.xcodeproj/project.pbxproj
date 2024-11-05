@@ -1,0 +1,492 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 54;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		975DAE8C2D647CE1002CE519 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 975DAE8B2D647CE1002CE519 /* WelcomeView.swift */; };
+		975DAE8E2D648021002CE519 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 975DAE8D2D648021002CE519 /* AboutView.swift */; };
+		975DAE902D64817A002CE519 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 975DAE8F2D64817A002CE519 /* SettingsView.swift */; };
+		976E17DE2D7A9D47000DE31A /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 976E17DD2D7A9D47000DE31A /* SwiftUIX */; };
+		97967B632D350ACE001D17F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97967B622D350ACE001D17F9 /* Assets.xcassets */; };
+		97967B6C2D3644DA001D17F9 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97967B6B2D3643F4001D17F9 /* MainView.swift */; };
+		97967B6D2D3644DF001D17F9 /* ServerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97967B6A2D3643E1001D17F9 /* ServerDetailView.swift */; };
+		97967B6E2D3644E4001D17F9 /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97967B692D3643AC001D17F9 /* MessagesView.swift */; };
+		97967B702D364530001D17F9 /* ServerDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97967B6F2D364530001D17F9 /* ServerDescription.swift */; };
+		97967B732D3645A0001D17F9 /* FlakeAppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97967B722D36459B001D17F9 /* FlakeAppManager.swift */; };
+		97967B772D3645E8001D17F9 /* SubscriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97967B762D3645E8001D17F9 /* SubscriptionView.swift */; };
+		97967B782D3645F8001D17F9 /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97967B752D3645D9001D17F9 /* Subscription.swift */; };
+		97967B7A2D364603001D17F9 /* SubscribeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97967B792D364603001D17F9 /* SubscribeView.swift */; };
+		97967B7C2D364619001D17F9 /* CircularBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97967B7B2D364619001D17F9 /* CircularBuffer.swift */; };
+		97967B7E2D36464E001D17F9 /* StatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97967B7D2D36464E001D17F9 /* StatusView.swift */; };
+		97967B802D36466A001D17F9 /* PublishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97967B7F2D36466A001D17F9 /* PublishView.swift */; };
+		97967B822D36468E001D17F9 /* ServerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97967B812D36468E001D17F9 /* ServerRowView.swift */; };
+		97967B842D3646A4001D17F9 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97967B832D3646A4001D17F9 /* Message.swift */; };
+		97967B862D3646BF001D17F9 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97967B852D3646BF001D17F9 /* MessageView.swift */; };
+		97967B8B2D3647AD001D17F9 /* MQTTClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97967B882D3646E3001D17F9 /* MQTTClient.swift */; };
+		97967B8C2D3647F8001D17F9 /* MQTTClient+MQTT3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97967B8A2D36472D001D17F9 /* MQTTClient+MQTT3.swift */; };
+		97967B8D2D3647FC001D17F9 /* MQTTClient+MQTT5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97967B892D364701001D17F9 /* MQTTClient+MQTT5.swift */; };
+		97967B912D3648FF001D17F9 /* ServerFromView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97967B902D3648FF001D17F9 /* ServerFromView.swift */; };
+		97BF6BBC2D2F993700EA302F /* CocoaMQTT in Frameworks */ = {isa = PBXBuildFile; productRef = 97BF6BBB2D2F993700EA302F /* CocoaMQTT */; };
+		97BF6BBE2D2F993700EA302F /* CocoaMQTTWebSocket in Frameworks */ = {isa = PBXBuildFile; productRef = 97BF6BBD2D2F993700EA302F /* CocoaMQTTWebSocket */; };
+		D10FB28726887313004DC992 /* FlakeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10FB28626887313004DC992 /* FlakeApp.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		975DAE8B2D647CE1002CE519 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		975DAE8D2D648021002CE519 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		975DAE8F2D64817A002CE519 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		97967B622D350ACE001D17F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		97967B692D3643AC001D17F9 /* MessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesView.swift; sourceTree = "<group>"; };
+		97967B6A2D3643E1001D17F9 /* ServerDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerDetailView.swift; sourceTree = "<group>"; };
+		97967B6B2D3643F4001D17F9 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		97967B6F2D364530001D17F9 /* ServerDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerDescription.swift; sourceTree = "<group>"; };
+		97967B722D36459B001D17F9 /* FlakeAppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlakeAppManager.swift; sourceTree = "<group>"; };
+		97967B752D3645D9001D17F9 /* Subscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
+		97967B762D3645E8001D17F9 /* SubscriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionView.swift; sourceTree = "<group>"; };
+		97967B792D364603001D17F9 /* SubscribeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeView.swift; sourceTree = "<group>"; };
+		97967B7B2D364619001D17F9 /* CircularBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularBuffer.swift; sourceTree = "<group>"; };
+		97967B7D2D36464E001D17F9 /* StatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusView.swift; sourceTree = "<group>"; };
+		97967B7F2D36466A001D17F9 /* PublishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishView.swift; sourceTree = "<group>"; };
+		97967B812D36468E001D17F9 /* ServerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerRowView.swift; sourceTree = "<group>"; };
+		97967B832D3646A4001D17F9 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		97967B852D3646BF001D17F9 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		97967B882D3646E3001D17F9 /* MQTTClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MQTTClient.swift; sourceTree = "<group>"; };
+		97967B892D364701001D17F9 /* MQTTClient+MQTT5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MQTTClient+MQTT5.swift"; sourceTree = "<group>"; };
+		97967B8A2D36472D001D17F9 /* MQTTClient+MQTT3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MQTTClient+MQTT3.swift"; sourceTree = "<group>"; };
+		97967B902D3648FF001D17F9 /* ServerFromView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerFromView.swift; sourceTree = "<group>"; };
+		D10FB28326887313004DC992 /* FlakeMQ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlakeMQ.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D10FB28626887313004DC992 /* FlakeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlakeApp.swift; sourceTree = "<group>"; };
+		D10FB28F26887314004DC992 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D10FB28026887313004DC992 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				976E17DE2D7A9D47000DE31A /* SwiftUIX in Frameworks */,
+				97BF6BBE2D2F993700EA302F /* CocoaMQTTWebSocket in Frameworks */,
+				97BF6BBC2D2F993700EA302F /* CocoaMQTT in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		97967B662D351ECC001D17F9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				97967B6B2D3643F4001D17F9 /* MainView.swift */,
+				97967B7D2D36464E001D17F9 /* StatusView.swift */,
+				97967B7F2D36466A001D17F9 /* PublishView.swift */,
+				97967B852D3646BF001D17F9 /* MessageView.swift */,
+				97967B692D3643AC001D17F9 /* MessagesView.swift */,
+				97967B812D36468E001D17F9 /* ServerRowView.swift */,
+				97967B902D3648FF001D17F9 /* ServerFromView.swift */,
+				97967B792D364603001D17F9 /* SubscribeView.swift */,
+				97967B762D3645E8001D17F9 /* SubscriptionView.swift */,
+				97967B6A2D3643E1001D17F9 /* ServerDetailView.swift */,
+				975DAE8B2D647CE1002CE519 /* WelcomeView.swift */,
+				975DAE8D2D648021002CE519 /* AboutView.swift */,
+				975DAE8F2D64817A002CE519 /* SettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		97967B742D3645CB001D17F9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				97967B832D3646A4001D17F9 /* Message.swift */,
+				97967B752D3645D9001D17F9 /* Subscription.swift */,
+				97967B7B2D364619001D17F9 /* CircularBuffer.swift */,
+				97967B6F2D364530001D17F9 /* ServerDescription.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		97967B872D3646DB001D17F9 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				97967B882D3646E3001D17F9 /* MQTTClient.swift */,
+				97967B8A2D36472D001D17F9 /* MQTTClient+MQTT3.swift */,
+				97967B892D364701001D17F9 /* MQTTClient+MQTT5.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		D10FB27A26887313004DC992 = {
+			isa = PBXGroup;
+			children = (
+				97967B872D3646DB001D17F9 /* Common */,
+				97967B742D3645CB001D17F9 /* Models */,
+				97967B662D351ECC001D17F9 /* Views */,
+				D10FB28626887313004DC992 /* FlakeApp.swift */,
+				97967B722D36459B001D17F9 /* FlakeAppManager.swift */,
+				97967B622D350ACE001D17F9 /* Assets.xcassets */,
+				D10FB28F26887314004DC992 /* Info.plist */,
+				D10FB28426887313004DC992 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D10FB28426887313004DC992 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D10FB28326887313004DC992 /* FlakeMQ.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D10FB28226887313004DC992 /* FlakeMQ */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D10FB29226887314004DC992 /* Build configuration list for PBXNativeTarget "FlakeMQ" */;
+			buildPhases = (
+				D10FB27F26887313004DC992 /* Sources */,
+				D10FB28026887313004DC992 /* Frameworks */,
+				D10FB28126887313004DC992 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FlakeMQ;
+			packageProductDependencies = (
+				97BF6BBB2D2F993700EA302F /* CocoaMQTT */,
+				97BF6BBD2D2F993700EA302F /* CocoaMQTTWebSocket */,
+				976E17DD2D7A9D47000DE31A /* SwiftUIX */,
+			);
+			productName = FlakeMQ;
+			productReference = D10FB28326887313004DC992 /* FlakeMQ.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D10FB27B26887313004DC992 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastSwiftUpdateCheck = 1250;
+				LastUpgradeCheck = 1620;
+				TargetAttributes = {
+					D10FB28226887313004DC992 = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+				};
+			};
+			buildConfigurationList = D10FB27E26887313004DC992 /* Build configuration list for PBXProject "FlakeMQ" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D10FB27A26887313004DC992;
+			packageReferences = (
+				97BF6BBA2D2F993700EA302F /* XCRemoteSwiftPackageReference "CocoaMQTT" */,
+				976E17DC2D7A9D47000DE31A /* XCRemoteSwiftPackageReference "swift-uix" */,
+			);
+			productRefGroup = D10FB28426887313004DC992 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D10FB28226887313004DC992 /* FlakeMQ */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D10FB28126887313004DC992 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				97967B632D350ACE001D17F9 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D10FB27F26887313004DC992 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				97967B6E2D3644E4001D17F9 /* MessagesView.swift in Sources */,
+				D10FB28726887313004DC992 /* FlakeApp.swift in Sources */,
+				97967B8B2D3647AD001D17F9 /* MQTTClient.swift in Sources */,
+				97967B802D36466A001D17F9 /* PublishView.swift in Sources */,
+				97967B7E2D36464E001D17F9 /* StatusView.swift in Sources */,
+				97967B782D3645F8001D17F9 /* Subscription.swift in Sources */,
+				97967B6D2D3644DF001D17F9 /* ServerDetailView.swift in Sources */,
+				97967B7C2D364619001D17F9 /* CircularBuffer.swift in Sources */,
+				97967B8D2D3647FC001D17F9 /* MQTTClient+MQTT5.swift in Sources */,
+				97967B6C2D3644DA001D17F9 /* MainView.swift in Sources */,
+				97967B822D36468E001D17F9 /* ServerRowView.swift in Sources */,
+				97967B862D3646BF001D17F9 /* MessageView.swift in Sources */,
+				97967B8C2D3647F8001D17F9 /* MQTTClient+MQTT3.swift in Sources */,
+				97967B702D364530001D17F9 /* ServerDescription.swift in Sources */,
+				97967B772D3645E8001D17F9 /* SubscriptionView.swift in Sources */,
+				975DAE8E2D648021002CE519 /* AboutView.swift in Sources */,
+				975DAE8C2D647CE1002CE519 /* WelcomeView.swift in Sources */,
+				97967B732D3645A0001D17F9 /* FlakeAppManager.swift in Sources */,
+				97967B912D3648FF001D17F9 /* ServerFromView.swift in Sources */,
+				97967B7A2D364603001D17F9 /* SubscribeView.swift in Sources */,
+				97967B842D3646A4001D17F9 /* Message.swift in Sources */,
+				975DAE902D64817A002CE519 /* SettingsView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		D10FB29026887314004DC992 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D10FB29126887314004DC992 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D10FB29326887314004DC992 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_TEAM = 2ZHWSJ25BU;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FlakeMQ;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.lsong.mqtt;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D10FB29426887314004DC992 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_TEAM = 2ZHWSJ25BU;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FlakeMQ;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.lsong.mqtt;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D10FB27E26887313004DC992 /* Build configuration list for PBXProject "FlakeMQ" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D10FB29026887314004DC992 /* Debug */,
+				D10FB29126887314004DC992 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D10FB29226887314004DC992 /* Build configuration list for PBXNativeTarget "FlakeMQ" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D10FB29326887314004DC992 /* Debug */,
+				D10FB29426887314004DC992 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		976E17DC2D7A9D47000DE31A /* XCRemoteSwiftPackageReference "swift-uix" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lsongdev/swift-uix.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		97BF6BBA2D2F993700EA302F /* XCRemoteSwiftPackageReference "CocoaMQTT" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/emqx/CocoaMQTT";
+			requirement = {
+				kind = exactVersion;
+				version = 2.1.6;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		976E17DD2D7A9D47000DE31A /* SwiftUIX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 976E17DC2D7A9D47000DE31A /* XCRemoteSwiftPackageReference "swift-uix" */;
+			productName = SwiftUIX;
+		};
+		97BF6BBB2D2F993700EA302F /* CocoaMQTT */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 97BF6BBA2D2F993700EA302F /* XCRemoteSwiftPackageReference "CocoaMQTT" */;
+			productName = CocoaMQTT;
+		};
+		97BF6BBD2D2F993700EA302F /* CocoaMQTTWebSocket */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 97BF6BBA2D2F993700EA302F /* XCRemoteSwiftPackageReference "CocoaMQTT" */;
+			productName = CocoaMQTTWebSocket;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = D10FB27B26887313004DC992 /* Project object */;
+}
