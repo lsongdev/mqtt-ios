@@ -2,7 +2,7 @@ import SwiftUI
 import Combine
 
 struct MainView: View {
-    @StateObject private var appManager = FlakeAppManager.shared
+    @EnvironmentObject var appManager: FlakeAppManager
     @State private var clients: [UUID: MQTTClientManager] = [:]
     @State private var selectedServer: ServerDescription?
     @State private var showingServer = false

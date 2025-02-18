@@ -51,7 +51,7 @@ class FlakeAppManager: ObservableObject {
             self.saveServers()
         }
     }
-    
+        
     func loadServers() {
         servers = storage.load()
     }
