@@ -134,6 +134,8 @@ struct MessagesView: View {
                 message: formData,
                 onPublish: onPublish
             )
+            .presentationDetents([.medium, .large])
+            .presentationDragIndicator(.hidden)
         }
     }
 }
