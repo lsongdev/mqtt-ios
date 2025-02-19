@@ -8,7 +8,7 @@ import SwiftUI
 import CocoaMQTT
 
 // MARK: - CocoaMQTT5Delegate
-extension MQTTClientManager: CocoaMQTT5Delegate {
+extension MQTTClient: CocoaMQTT5Delegate {
     func mqtt5(_ mqtt5: CocoaMQTT5, didConnectAck ack: CocoaMQTTCONNACKReasonCode, connAckData: MqttDecodeConnAck?) {
         if ack == .success {
             connectionState = .connected

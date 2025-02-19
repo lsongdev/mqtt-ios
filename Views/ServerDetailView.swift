@@ -11,7 +11,7 @@ import Combine
 // MARK: - Server Detail View
 struct ServerDetailView: View {
     @ObservedObject var appManager: FlakeAppManager = FlakeAppManager.shared
-    @ObservedObject var client: MQTTClientManager
+    @ObservedObject var client: MQTTClient
     @State private var showSubscribe = false
     
     var body: some View {

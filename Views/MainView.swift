@@ -3,21 +3,14 @@ import Combine
 
 struct MainView: View {
     @EnvironmentObject var appManager: FlakeAppManager
-    @State private var clients: [UUID: MQTTClientManager] = [:]
+    
     @State private var selectedServer: ServerDescription?
     @State private var showingServer = false
     @State private var showingWelcome = false
     @State private var showingSettings = false
     @State private var searchText = ""
     
-    func getClient(for server: ServerDescription) -> MQTTClientManager {
-        if let existingClient = clients[server.id] {
-            return existingClient
-        }
-        let client = MQTTClientManager(server: server)
-        clients[server.id] = client
-        return client
-    }
+    
     
     // Filtered servers based on search text
     private var filteredServers: [ServerDescription] {
@@ -34,7 +27,7 @@ struct MainView: View {
         List {
             Section ("Servers") {
                 ForEach(filteredServers) { server in
-                    let client = getClient(for: server)
+                     let client = appManager.getClient(for: server)
                     NavigationLink(destination: ServerDetailView(
                         client: client
                     )) {
@@ -105,11 +98,13 @@ struct MainView: View {
         }
         .sheet(isPresented: $showingSettings) {
             SettingsView()
+                .presentationDetents([.medium, .large])
+                .presentationDragIndicator(.hidden)
         }
         .sheet(item: $selectedServer) { server in
             ServerFormView(server: server) { updatedServer in
                 appManager.updateServer(server: updatedServer)
-                let client = getClient(for: server)
+                let client = appManager.getClient(for: server)
                 client.server = updatedServer
                 
             }
@@ -118,5 +113,41 @@ struct MainView: View {
             showingWelcome = appManager.servers.isEmpty
         }
         
+    }
+}
+
+
+struct ServerRowView: View {
+    @ObservedObject var client: MQTTClient
+    
+    private var statusColor: Color {
+        switch client.connectionState {
+        case .connected: return .green
+        case .connecting: return .orange
+        case .disconnected: return .secondary
+        case .error: return .red
+        }
+    }
+    
+    var body: some View {
+        HStack(spacing: 12) {
+            // Status indicator dot
+           Circle()
+               .fill(statusColor)
+               .frame(width: 8, height: 8)
+            // Server info
+            VStack(alignment: .leading, spacing: 2) {
+                Text(client.server.name.isEmpty ? client.server.host : client.server.name)
+                    .font(.headline)
+                
+                Text("\(client.server.host):\(String(client.server.port))")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
+            Spacer()
+            Text("\(client.messages.count)")
+                .foregroundColor(.secondary)
+            
+        }
     }
 }

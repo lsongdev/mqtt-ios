@@ -7,14 +7,13 @@
 import SwiftUI
 import CocoaMQTT
 
-class MQTTClientManager: NSObject, ObservableObject {
-    private var mqttClient: Any? // Generic type to hold either CocoaMQTT or CocoaMQTT5
+class MQTTClient: NSObject, ObservableObject {
+    private var client: Any? // Generic type to hold either CocoaMQTT or CocoaMQTT5
     private var currentMessageId: UInt16 = 0
     private let maxMessages: Int = 1000
     @Published var server: ServerDescription
     @Published var messages = CircularBuffer<Message>()
     @Published var connectionState: ConnectionState = .disconnected
-    
     
     enum ConnectionState: Equatable {
         case disconnected
@@ -51,78 +50,70 @@ class MQTTClientManager: NSObject, ObservableObject {
     
     private func connectMQTT3(_ server: ServerDescription) {
         let client = CocoaMQTT(clientID: server.clientId, host: server.host, port: server.portN)
-        
         client.username = server.username
         client.password = server.password
         client.enableSSL = server.useTLS
         client.autoReconnect = true
         client.cleanSession = true
-        client.keepAlive = 60
+        client.keepAlive = 120
         client.delegate = self
     
-        
         if !client.connect() {
             print("MQTT3 连接初始化失败")
             connectionState = .error("Failed to initialize MQTT3 connection")
         }
-        
-        mqttClient = client
+        self.client = client
     }
     
     private func connectMQTT5(_ server: ServerDescription) {
-        let client = CocoaMQTT5(clientID: server.clientId,
-                               host: server.host,
-                                port: server.portN)
-        
+        let client = CocoaMQTT5(clientID: server.clientId, host: server.host, port: server.portN)
         client.username = server.username
         client.password = server.password
         client.enableSSL = server.useTLS
         client.autoReconnect = true
-
-        client.keepAlive = 60
+        client.cleanSession = true
+        client.keepAlive = 120
         client.delegate = self
-        
         if !client.connect() {
             print("MQTT5 连接初始化失败")
             connectionState = .error("Failed to initialize MQTT5 connection")
         }
-        
-        mqttClient = client
+        self.client = client
     }
     
     func disconnect() {
-        if let client = mqttClient as? CocoaMQTT {
+        if let client = client as? CocoaMQTT {
             client.disconnect()
-        } else if let client = mqttClient as? CocoaMQTT5 {
+        } else if let client = client as? CocoaMQTT5 {
             client.disconnect()
         }
-        mqttClient = nil
+        client = nil
         connectionState = .disconnected
     }
     
     func publish(to message: Message) {
-//        print("publish: \(topic) -> \(payload)")
+        // print("publish: \(topic) -> \(payload)")
         let qos = CocoaMQTTQoS(rawValue: UInt8(message.qos)) ?? .qos1
-        if let client = mqttClient as? CocoaMQTT {
+        if let client = client as? CocoaMQTT {
             client.publish(message.topic, withString: message.payload, qos: qos, retained: message.retain)
-        } else if let client = mqttClient as? CocoaMQTT5 {
+        } else if let client = client as? CocoaMQTT5 {
             let properties = MqttPublishProperties()
             client.publish(message.topic, withString: message.payload, retained: message.retain, properties: properties)
         }
     }
     
     func subscribe(to topic: String, qos: Int = 0) {
-        if let client = mqttClient as? CocoaMQTT {
+        if let client = client as? CocoaMQTT {
             client.subscribe(topic, qos: CocoaMQTTQoS(rawValue: UInt8(qos)) ?? .qos1)
-        } else if let client = mqttClient as? CocoaMQTT5 {
+        } else if let client = client as? CocoaMQTT5 {
             client.subscribe(topic, qos: CocoaMQTTQoS(rawValue: UInt8(qos)) ?? .qos1)
         }
     }
     
     func unsubscribe(from topic: String) {
-        if let client = mqttClient as? CocoaMQTT {
+        if let client = client as? CocoaMQTT {
             client.unsubscribe(topic)
-        } else if let client = mqttClient as? CocoaMQTT5 {
+        } else if let client = client as? CocoaMQTT5 {
             client.unsubscribe(topic)
         }
     }
@@ -134,11 +125,10 @@ class MQTTClientManager: NSObject, ObservableObject {
             messages.removeFirst()
         }
     }
+    
     func restoreSubscriptions() {
         for topic in server.subscriptions {
             subscribe(to: topic.name, qos: topic.qos)
         }
-//        addMessage("Resubscribed to \(server.subscriptions.count) topics")
     }
 }
-

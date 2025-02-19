@@ -9,7 +9,7 @@ import SwiftUI
 
 // MARK: - Publish Sheet
 struct PublishView: View {
-    @Environment(\.dismiss) private var dismiss
+    @Environment(\.dismiss) var dismiss
     @State private var formData: Message
     private let onPublish: (Message) -> Void
     

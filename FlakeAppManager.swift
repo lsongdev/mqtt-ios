@@ -1,25 +1,38 @@
-//
-//  ServerViewModel.swift
-//  MQTTClient
-//
-//  Created by Lsong on 1/14/25.
-//
 import SwiftUI
 
-// MARK: - View Models
-class FlakeAppManager: ObservableObject {
-    static var shared: FlakeAppManager = .init()
-    private let storage: ServerDescriptionStorage = UserDefaultsStorage()
-    @Published var servers: [ServerDescription] = []
+// MARK: - App Manager
+final class FlakeAppManager: ObservableObject {
+    // MARK: - Singleton
+    static let shared: FlakeAppManager = .init()
     
-    init() {
-        loadServers()
+    // MARK: - Published Properties
+    @Published private(set) var servers: [ServerDescription] = []
+    @State private var clients: [UUID: MQTTClient] = [:]
+    
+    func getClient(for server: ServerDescription) -> MQTTClient {
+        if let existingClient = clients[server.id] {
+            return existingClient
+        }
+        let client = MQTTClient(server: server)
+        clients[server.id] = client
+        return client
     }
     
+    // MARK: - Private Properties
+    private var backgroundTask: UIBackgroundTaskIdentifier = .invalid
+    private let storageKey = "servers"
+    
+    // MARK: - Initialization
+    init() {
+        loadServers()
+        setupBackgroundHandling()
+    }
+    
+    // MARK: - Public Methods
     func addServer(_ server: ServerDescription) {
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
             self.servers.append(server)
-            self.objectWillChange.send()
             self.saveServers()
         }
     }
@@ -39,65 +52,82 @@ class FlakeAppManager: ObservableObject {
     }
     
     func removeServer(id: UUID) {
-        if let index = servers.firstIndex(where: { $0.id == id }) {
-            servers.remove(at: index)
-            saveServers()
-        }
+        guard let index = servers.firstIndex(where: { $0.id == id }) else { return }
+        servers.remove(at: index)
+        saveServers()
     }
     
     func updateServer(server: ServerDescription) {
-        if let index = self.servers.firstIndex(where: { $0.id == server.id }) {
-            self.servers[index] = server
-            self.saveServers()
-        }
-    }
-        
-    func loadServers() {
-        servers = storage.load()
+        guard let index = servers.firstIndex(where: { $0.id == server.id }) else { return }
+        servers[index] = server
+        saveServers()
     }
     
-    func saveServers() {
-        storage.save(servers)
-    }
     func addDemoServers() {
         addServer(ServerDescription(host: "broker.emqx.io", port: "1883"))
         addServer(ServerDescription(host: "broker.hivemq.com", port: "1883"))
     }
 }
 
-// MARK: - Storage
-protocol ServerDescriptionStorage {
-    func save(_ servers: [ServerDescription])
-    func load() -> [ServerDescription]
-}
-
-struct UserDefaultsStorage: ServerDescriptionStorage {
-    private let key = "servers"
-    
-    func save(_ servers: [ServerDescription]) {
-        if let data = try? JSONEncoder().encode(servers) {
-            print("save \(data)")
-            UserDefaults.standard.set(data, forKey: key)
-        }
-    }
-    
-    func load() -> [ServerDescription] {
-        guard let data = UserDefaults.standard.data(forKey: key),
-              let servers = try? JSONDecoder().decode([ServerDescription].self, from: data)
-        else {
-            return []
-        }
-        return servers
-    }
-}
-
+// MARK: - Private Methods
 extension FlakeAppManager {
+    func loadServers() {
+        guard let data = UserDefaults.standard.data(forKey: storageKey),
+              let servers = try? JSONDecoder().decode([ServerDescription].self, from: data) else {
+            return
+        }
+        self.servers = servers
+    }
+    
+    func saveServers() {
+        guard let data = try? JSONEncoder().encode(servers) else {
+            print("Failed to encode servers")
+            return
+        }
+        UserDefaults.standard.set(data, forKey: storageKey)
+    }
+    
+    func setupBackgroundHandling() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleBackgroundTransition),
+            name: UIApplication.didEnterBackgroundNotification,
+            object: nil
+        )
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleForegroundTransition),
+            name: UIApplication.willEnterForegroundNotification,
+            object: nil
+        )
+    }
+    
+    @objc func handleBackgroundTransition() {
+        backgroundTask = UIApplication.shared.beginBackgroundTask { [weak self] in
+            self?.endBackgroundTask()
+        }
+    }
+    
+    @objc func handleForegroundTransition() {
+        endBackgroundTask()
+    }
+    
+    func endBackgroundTask() {
+        guard backgroundTask != .invalid else { return }
+        UIApplication.shared.endBackgroundTask(backgroundTask)
+        backgroundTask = .invalid
+    }
+}
+
+// MARK: - App Information
+extension FlakeAppManager {
+    var appVersion: String {
+        Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0"
+    }
     var appName: String {
         Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String
             ?? Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String
-            ?? "PicoVPN"
-    }
-    var appVersion: String {
-        Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "0.0"
+            ?? "FlakeMQ"
     }
 }

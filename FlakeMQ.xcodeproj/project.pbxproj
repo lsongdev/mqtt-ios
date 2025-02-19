@@ -78,19 +78,19 @@
 		97967B662D351ECC001D17F9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				975DAE8F2D64817A002CE519 /* SettingsView.swift */,
-				975DAE8D2D648021002CE519 /* AboutView.swift */,
-				975DAE8B2D647CE1002CE519 /* WelcomeView.swift */,
-				97967B902D3648FF001D17F9 /* ServerFromView.swift */,
-				97967B852D3646BF001D17F9 /* MessageView.swift */,
-				97967B812D36468E001D17F9 /* ServerRowView.swift */,
-				97967B7F2D36466A001D17F9 /* PublishView.swift */,
+				97967B6B2D3643F4001D17F9 /* MainView.swift */,
 				97967B7D2D36464E001D17F9 /* StatusView.swift */,
+				97967B7F2D36466A001D17F9 /* PublishView.swift */,
+				97967B852D3646BF001D17F9 /* MessageView.swift */,
+				97967B692D3643AC001D17F9 /* MessagesView.swift */,
+				97967B812D36468E001D17F9 /* ServerRowView.swift */,
+				97967B902D3648FF001D17F9 /* ServerFromView.swift */,
 				97967B792D364603001D17F9 /* SubscribeView.swift */,
 				97967B762D3645E8001D17F9 /* SubscriptionView.swift */,
-				97967B6B2D3643F4001D17F9 /* MainView.swift */,
 				97967B6A2D3643E1001D17F9 /* ServerDetailView.swift */,
-				97967B692D3643AC001D17F9 /* MessagesView.swift */,
+				975DAE8B2D647CE1002CE519 /* WelcomeView.swift */,
+				975DAE8D2D648021002CE519 /* AboutView.swift */,
+				975DAE8F2D64817A002CE519 /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

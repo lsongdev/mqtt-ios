@@ -5,7 +5,6 @@
 //  Created by Lsong on 2/18/25.
 //
 
-
 import SwiftUI
 
 struct WelcomeView: View {

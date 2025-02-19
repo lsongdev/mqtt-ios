@@ -24,7 +24,7 @@ struct Message: Identifiable, Equatable {
         self.retain = retain
     }
     var isValid: Bool {
-        return !topic.isEmpty && !payload.isEmpty
+        return (!topic.isEmpty && !payload.isEmpty)
     }
     static var empty: Message {
         Message(topic: "", payload: "")

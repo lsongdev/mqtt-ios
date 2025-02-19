@@ -103,7 +103,9 @@ struct MessagesView: View {
                         }
                         
                         Button(action: {
-                            guard !formData.isValid else { return }
+                            guard formData.isValid else {
+                                return
+                            }
                             onPublish(formData)
                             formData.payload = ""
                             isScrolledToBottom = true
@@ -135,7 +137,6 @@ struct MessagesView: View {
                 onPublish: onPublish
             )
             .presentationDetents([.medium, .large])
-            .presentationDragIndicator(.hidden)
         }
     }
 }

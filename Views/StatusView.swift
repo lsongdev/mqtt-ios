@@ -9,7 +9,7 @@ import SwiftUI
 
 // MARK: - Status View
 struct StatusView: View {
-    let connectionState: MQTTClientManager.ConnectionState
+    let connectionState: MQTTClient.ConnectionState
     
     var body: some View {
         HStack {
