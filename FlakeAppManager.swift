@@ -1,8 +1,15 @@
 import SwiftUI
 import UserNotifications
+import BackgroundTasks
 
 // MARK: - App Manager
 final class FlakeAppManager: ObservableObject {
+    // MARK: - Constants
+    private enum BackgroundTaskIdentifier {
+        static let refresh = "org.lsong.mqtt.refresh"
+        static let processing = "org.lsong.mqtt.processing"
+    }
+    
     // MARK: - Singleton
     static let shared: FlakeAppManager = .init()
     
@@ -28,6 +35,7 @@ final class FlakeAppManager: ObservableObject {
         loadServers()
         setupBackgroundHandling()
         requestNotificationPermission()
+        registerBackgroundTasks()
     }
     
     // MARK: - Notification Methods
@@ -89,6 +97,77 @@ final class FlakeAppManager: ObservableObject {
     func addDemoServers() {
         addServer(ServerDescription(host: "broker.emqx.io", port: "1883"))
         addServer(ServerDescription(host: "broker.hivemq.com", port: "1883"))
+    }
+    
+    // MARK: - Background Task Registration
+    private func registerBackgroundTasks() {
+        BGTaskScheduler.shared.register(
+            forTaskWithIdentifier: BackgroundTaskIdentifier.refresh,
+            using: nil
+        ) { task in
+            self.handleAppRefresh(task: task as! BGAppRefreshTask)
+        }
+        
+        BGTaskScheduler.shared.register(
+            forTaskWithIdentifier: BackgroundTaskIdentifier.processing,
+            using: nil
+        ) { task in
+            self.handleProcessingTask(task: task as! BGProcessingTask)
+        }
+    }
+    
+    private func handleAppRefresh(task: BGAppRefreshTask) {
+        // 保持 MQTT 连接
+        for client in clients.values {
+            if client.connectionState.isConnected {
+                client.connect()
+            }
+        }
+        
+        // 完成后台任务
+        task.setTaskCompleted(success: true)
+        
+        // 安排下一次刷新
+        scheduleAppRefresh()
+    }
+    
+    private func handleProcessingTask(task: BGProcessingTask) {
+        // 保持 MQTT 连接
+        for client in clients.values {
+            if client.connectionState.isConnected {
+                client.connect()
+            }
+        }
+        
+        // 完成后台任务
+        task.setTaskCompleted(success: true)
+        
+        // 安排下一次处理
+        scheduleProcessingTask()
+    }
+    
+    private func scheduleAppRefresh() {
+        let request = BGAppRefreshTaskRequest(identifier: BackgroundTaskIdentifier.refresh)
+        request.earliestBeginDate = Date(timeIntervalSinceNow: 15 * 60) // 15分钟后
+        
+        do {
+            try BGTaskScheduler.shared.submit(request)
+        } catch {
+            print("无法安排应用刷新: \(error)")
+        }
+    }
+    
+    private func scheduleProcessingTask() {
+        let request = BGProcessingTaskRequest(identifier: BackgroundTaskIdentifier.processing)
+        request.earliestBeginDate = Date(timeIntervalSinceNow: 30 * 60) // 30分钟后
+        request.requiresNetworkConnectivity = true
+        request.requiresExternalPower = false
+        
+        do {
+            try BGTaskScheduler.shared.submit(request)
+        } catch {
+            print("无法安排处理任务: \(error)")
+        }
     }
 }
 
