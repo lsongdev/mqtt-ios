@@ -124,6 +124,14 @@ class MQTTClient: NSObject, ObservableObject {
         if messages.count > maxMessages {
             messages.removeFirst()
         }
+        
+        // 发送通知
+        if UIApplication.shared.applicationState == .background {
+            FlakeAppManager.shared.sendNotification(
+                title: topic,
+                body: payload
+            )
+        }
     }
     
     func restoreSubscriptions() {
