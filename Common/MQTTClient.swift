@@ -79,10 +79,10 @@ class MQTTClient: NSObject, ObservableObject {
         client.username = server.username
         client.password = server.password
         client.enableSSL = server.useTLS
-        // client.allowUntrustCACertificate = true
         client.autoReconnect = true
         client.cleanSession = true
         client.keepAlive = 600 // Increased from 120 to 600 seconds (10 minutes)
+//        client.allowUntrustCACertificate = true
 //        let connectProperties = MqttConnectProperties()
 //        connectProperties.topicAliasMaximum = 0
 //        connectProperties.sessionExpiryInterval = 0

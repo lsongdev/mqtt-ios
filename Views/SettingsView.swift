@@ -10,9 +10,6 @@ struct SettingsView: View {
     var body: some View {
         NavigationView {
             List {
-//                NavigationLink(destination: Text("General")) {
-//                    Text("General")
-//                }
                 NavigationLink(destination: AboutView()) {
                     Text("About")
                 }
